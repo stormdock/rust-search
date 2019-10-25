@@ -21,13 +21,13 @@ use tantivy::schema::{Document, Schema, STORED, TEXT};
 use tantivy::{doc, Index, ReloadPolicy};
 
 fn main() -> tantivy::Result<()> {
-    let check_path = Path::new("/tmp/mike");
+    let check_path = Path::new("/tmp/tantivy");
     let dir_exists = check_path.exists();
     if dir_exists {
         remove_dir_all(check_path).expect("dir does not exist");
     }
 
-    let index_path = Path::new("/tmp/mike");
+    let index_path = Path::new("/tmp/tantivy");
     create_dir(index_path).expect("dir already exists");
 
     // # Defining the schema
