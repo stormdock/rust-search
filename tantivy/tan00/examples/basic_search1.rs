@@ -19,12 +19,13 @@ use tantivy::schema::{Document, Schema, TEXT, STORED};
 use tantivy::{doc, Index, ReloadPolicy};
 // use tempfile::TempDir;
 use std::path::Path;
+use std::fs::{create_dir,remove_dir_all};
 
 fn main() -> tantivy::Result<()> {
-    // Let's create a temporary directory for the
-    // sake of this example
-    // let index_path = TempDir::new()?;
+
     let index_path = Path::new("/tmp/mike");
+    remove_dir_all(index_path).expect("dir does not exist");
+    create_dir(index_path);
 
     // # Defining the schema
     //
