@@ -15,17 +15,20 @@
 use tantivy::collector::TopDocs;
 use tantivy::query::QueryParser;
 // use tantivy::schema::*;
-use tantivy::schema::{Document, Schema, TEXT, STORED};
-use tantivy::{doc, Index, ReloadPolicy};
-// use tempfile::TempDir;
+use std::fs::{create_dir, remove_dir_all};
 use std::path::Path;
-use std::fs::{create_dir,remove_dir_all};
+use tantivy::schema::{Document, Schema, STORED, TEXT};
+use tantivy::{doc, Index, ReloadPolicy};
 
 fn main() -> tantivy::Result<()> {
+    let check_path = Path::new("/tmp/mike");
+    let dir_exists = check_path.exists();
+    if dir_exists {
+        remove_dir_all(check_path).expect("dir does not exist");
+    }
 
     let index_path = Path::new("/tmp/mike");
-    remove_dir_all(index_path).expect("dir does not exist");
-    create_dir(index_path);
+    create_dir(index_path).expect("dir already exists");
 
     // # Defining the schema
     //
