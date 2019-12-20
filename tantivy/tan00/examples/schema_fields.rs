@@ -11,8 +11,8 @@ fn main() -> tantivy::Result<()> {
     let index = Index::open_in_dir(&directory)?;
     let schema = index.schema();
 
-    for (x, y) in schema.fields() {
-        println!("{:?} {:?}", x, y);
+    for (field, field_entry) in schema.fields() {
+        println!("{} {}", field.field_id(), field_entry.name());
     }
 
     Ok(())
