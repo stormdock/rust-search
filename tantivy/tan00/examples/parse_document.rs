@@ -1,12 +1,4 @@
-//use std::fmt;
-//use std::collections::BTreeMap;
-//use std::collections::HashMap;
 use std::path::Path;
-//use std::sync::Arc;
-
-// use serde::de::{SeqAccess, Visitor};
-//use serde::ser::SerializeSeq;
-//use serde::{Deserialize, Deserializer, Serialize, Serializer};
 use serde_json::{self, Map as JsonObject, Value as JsonValue};
 
 use tantivy::Index;
