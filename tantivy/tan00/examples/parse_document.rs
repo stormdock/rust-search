@@ -1,24 +1,17 @@
-// use tantivy::schema::field_type::ValueParsingError;
-
+use std::fmt;
 use std::collections::BTreeMap;
 use std::collections::HashMap;
+use std::path::Path;
 use std::sync::Arc;
 
 use serde::de::{SeqAccess, Visitor};
 use serde::ser::SerializeSeq;
 use serde::{Deserialize, Deserializer, Serialize, Serializer};
 use serde_json::{self, Map as JsonObject, Value as JsonValue};
-use std::fmt;
 
-use std::path::Path;
 use tantivy::Index;
-
-//use tantivy::schema::field_value::FieldValue;
-
 use tantivy::schema::{DocParsingError, Document};
-// use tantivy::schema::DocParsingError;
 
-//
 /// Build a document object from a json-object.
 pub fn parse_document(doc_json: &str) -> Result<Document, DocParsingError> {
     let json_obj: JsonObject<String, JsonValue> = serde_json::from_str(doc_json).map_err(|_| {
