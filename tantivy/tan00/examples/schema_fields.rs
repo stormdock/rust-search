@@ -1,11 +1,11 @@
-use tantivy::collector::TopDocs;
-use tantivy::query::QueryParser;
+//use tantivy::collector::TopDocs;
+//use tantivy::query::QueryParser;
 // use tantivy::schema::*;
-use std::fs::{create_dir, remove_dir_all};
+//use std::fs::{create_dir, remove_dir_all};
 use std::path::Path;
-use tantivy::schema::{Document, Schema, STORED, TEXT};
-use tantivy::{doc, Index, ReloadPolicy};
-
+//use tantivy::schema::{Document, Schema, STORED, TEXT};
+use tantivy::Index;
+//
 fn main() -> tantivy::Result<()> {
     let directory = Path::new("/tmp/tantivy/idxhn");
     let dir_exists = directory.exists();
