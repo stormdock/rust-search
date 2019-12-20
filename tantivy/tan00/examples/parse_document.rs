@@ -14,7 +14,7 @@ pub fn parse_document(doc_json: &str) -> Result<Document, DocParsingError> {
         DocParsingError::NotJSON(doc_json_sample)
     })?;
 
-    let mut doc = Document::default();
+    let doc = Document::default();
     for (field_name, json_value) in json_obj.iter() {
         println!("{} {}", field_name, json_value);
     }
@@ -41,9 +41,9 @@ fn main() -> tantivy::Result<()> {
             "score": 4
     }"#;
 
-    // this works too !
+    // this should work too !
     // let doc = schema.parse_document(doc_json).unwrap();
-    let doc = parse_document(doc_json).unwrap();
+    let _doc = parse_document(doc_json).unwrap();
 
     Ok(())
 }
