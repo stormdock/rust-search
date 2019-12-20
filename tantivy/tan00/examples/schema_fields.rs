@@ -1,3 +1,5 @@
+// This will work on any meta.json file located in the directory
+
 use std::path::Path;
 use tantivy::Index;
 
