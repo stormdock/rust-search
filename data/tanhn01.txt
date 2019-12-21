@@ -1,0 +1,11 @@
+{"id":21693415,"score":1,"title":"Show HN: Emvi – Knowledge management platform for companies and teams"}
+{"id":21693417,"score":1,"title":"Draw UML Diagrams with ASCII"}
+{"id":21693421,"score":1,"title":"Should Comedians Have Audiences Sign NDAs?"}
+{"id":21693423,"score":1,"title":"It turns out there's truth to 'dead battery bounce' after all (2015)"}
+{"id":21693431,"score":1,"title":"The most copied StackOverflow snippet of all time is flawed"}
+{"id":21693448,"score":2,"title":"Securing Smart TVs"}
+{"id":21693450,"score":1,"title":"“Without C, we wouldn't be having this conversation” – Kamran Amini [audio]"}
+{"id":21693454,"score":1,"title":"Building a Helm 3 Chart for an Express.js Microservice"}
+{"id":21693462,"score":1,"title":"We redesigned our product page and improved page value based on GA"}
+{"id":21693488,"score":2,"title":"How Hacker News ranking algorithm works"}
+{"id":21693500,"score":1,"title":"Encrypting all your logs with logrotate and Peacemakr"}
