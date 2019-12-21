@@ -49,8 +49,9 @@ pub fn parse_document(doc_json: &str) -> Result<Document, DocParsingError> {
 }
 
 fn main() -> tantivy::Result<()> {
+    let json_file = String::from("/tmp13/rust-search/data/tanhn02.txt");
 
-    let json_file = Path::new("/tmp13/rust-search/data/tanhn02.txt");
+    // let json_file = Path::new("/tmp13/rust-search/data/tanhn02.txt");
 
     let directory = Path::new("/tmp/tantivy/idxhn");
     let dir_exists = directory.exists();
@@ -67,13 +68,13 @@ fn main() -> tantivy::Result<()> {
 
     read_file_to_buffer(json_file.to_string());
 
-/*
-    let doc_json = r#"{
-            "title": "my title",
-            "id": 123456,
-            "score": 4
-    }"#;
-*/
+    /*
+        let doc_json = r#"{
+                "title": "my title",
+                "id": 123456,
+                "score": 4
+        }"#;
+    */
     // this should work too !
     // let doc = schema.parse_document(doc_json).unwrap();
     // let _doc = parse_document(doc_json).unwrap();
