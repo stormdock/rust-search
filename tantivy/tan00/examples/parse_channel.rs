@@ -10,11 +10,11 @@ use tantivy::schema::{DocParsingError, Document};
 use tantivy::Index;
 
 use crossbeam::crossbeam_channel::{unbounded, Receiver};
-//
+
 fn process_lines(r: Receiver<String>) {
     let msg = r.recv().unwrap();
     println!("{}", msg);
-    parse_document(&msg);
+    let _x = parse_document(&msg);
 }
 
 fn read_file_to_buffer(filename: String) {
@@ -50,7 +50,7 @@ pub fn parse_document(doc_json: &str) -> Result<Document, DocParsingError> {
 }
 
 fn main() -> tantivy::Result<()> {
-    let json_file = String::from("/tmp13/rust-search/data/tanhn02.txt");
+    let json_file = String::from("/tmp13/rust-search/data/tanhn01.txt");
 
     let directory = Path::new("/tmp/tantivy/idxhn");
     let dir_exists = directory.exists();
