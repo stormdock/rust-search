@@ -1,4 +1,4 @@
-use serde_json::{self, Map as JsonObject, Value as JsonValue};
+use serde_json::{self, Map, Value};
 
 use std::fs::File;
 use std::io::BufRead;
@@ -33,7 +33,7 @@ fn read_file_to_buffer(filename: String) {
 }
 
 pub fn parse_document(doc_json: &str) -> Result<Document, DocParsingError> {
-    let json_obj: JsonObject<String, JsonValue> = serde_json::from_str(doc_json).map_err(|_| {
+    let json_obj: Map<String, Value> = serde_json::from_str(doc_json).map_err(|_| {
         let doc_json_sample: String = if doc_json.len() < 20 {
             String::from(doc_json)
         } else {
