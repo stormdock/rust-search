@@ -43,8 +43,8 @@ pub fn parse_document(doc_json: &str) -> Result<Document, DocParsingError> {
     })?;
 
     let doc = Document::default();
-    for (field_name, json_value) in json_obj.iter() {
-        println!("{} {}", field_name, json_value);
+    for (json_key, json_value) in json_obj.iter() {
+        println!("{} {}", json_key, json_value);
     }
     Ok(doc)
 }

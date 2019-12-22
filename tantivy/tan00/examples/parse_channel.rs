@@ -1,4 +1,4 @@
-use serde_json::{self, Map, Value};
+use serde_json::{Map, Value};
 
 use std::fs::File;
 use std::io::BufRead;
@@ -43,8 +43,16 @@ pub fn parse_document(doc_json: &str) -> Result<Document, DocParsingError> {
     })?;
 
     let doc = Document::default();
-    for (field_name, json_value) in json_obj.iter() {
-        println!("{} {}", field_name, json_value);
+
+    let mut m = Map::new();
+    for (json_key, json_value) in json_obj.iter() {
+        // println!("{} {}", json_key, json_value);
+
+        let my_json_value = json_value.clone();
+
+        m.insert(json_key.to_string(), my_json_value);
+        //let x: Value = m.into();
+        //println!("{}", x);
     }
     Ok(doc)
 }
