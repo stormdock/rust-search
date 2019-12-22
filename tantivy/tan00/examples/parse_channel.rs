@@ -1,5 +1,6 @@
 use serde_json::{Map, Value};
 
+use std::collections::HashSet;
 use std::fs::File;
 use std::io::BufRead;
 use std::io::BufReader;
@@ -14,7 +15,15 @@ use crossbeam::crossbeam_channel::{unbounded, Receiver};
 fn process_lines(r: Receiver<String>) {
     let msg = r.recv().unwrap();
     println!("{}", msg);
-    let _x = parse_document(&msg);
+
+    let mut schema_keys = HashSet::new();
+
+    // Add the keys from your tantivy schema
+    schema_keys.insert("id".to_string());
+    schema_keys.insert("score".to_string());
+    schema_keys.insert("title".to_string());
+
+    let _x = parse_document(schema_keys, &msg);
 }
 
 fn read_file_to_buffer(filename: String) {
@@ -32,7 +41,7 @@ fn read_file_to_buffer(filename: String) {
     }
 }
 
-pub fn parse_document(doc_json: &str) -> Result<Document, DocParsingError> {
+pub fn parse_document(skeys: HashSet<String>, doc_json: &str) -> Result<Document, DocParsingError> {
     let json_obj: Map<String, Value> = serde_json::from_str(doc_json).map_err(|_| {
         let doc_json_sample: String = if doc_json.len() < 20 {
             String::from(doc_json)
@@ -46,6 +55,10 @@ pub fn parse_document(doc_json: &str) -> Result<Document, DocParsingError> {
 
     let mut m = Map::new();
     for (json_key, json_value) in json_obj.iter() {
+        if skeys.contains(json_key) {
+            println!("hit on {}", json_key)
+        }
+
         let my_json_value = json_value.clone();
         m.insert(json_key.to_string(), my_json_value);
     }
