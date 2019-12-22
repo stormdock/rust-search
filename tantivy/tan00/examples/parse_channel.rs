@@ -56,11 +56,10 @@ pub fn parse_document(skeys: HashSet<String>, doc_json: &str) -> Result<Document
     let mut m = Map::new();
     for (json_key, json_value) in json_obj.iter() {
         if skeys.contains(json_key) {
-            println!("hit on {}", json_key)
+            println!("hit on {}", json_key);
+            let my_json_value = json_value.clone();
+            m.insert(json_key.to_string(), my_json_value);
         }
-
-        let my_json_value = json_value.clone();
-        m.insert(json_key.to_string(), my_json_value);
     }
     let x: Value = m.into();
     println!("{}", x);
