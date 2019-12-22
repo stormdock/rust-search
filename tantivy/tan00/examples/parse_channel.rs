@@ -46,14 +46,11 @@ pub fn parse_document(doc_json: &str) -> Result<Document, DocParsingError> {
 
     let mut m = Map::new();
     for (json_key, json_value) in json_obj.iter() {
-        // println!("{} {}", json_key, json_value);
-
         let my_json_value = json_value.clone();
-
         m.insert(json_key.to_string(), my_json_value);
-        //let x: Value = m.into();
-        //println!("{}", x);
     }
+    let x: Value = m.into();
+    println!("{}", x);
     Ok(doc)
 }
 
@@ -74,17 +71,5 @@ fn main() -> tantivy::Result<()> {
     }
 
     read_file_to_buffer(json_file.to_string());
-
-    /*
-        let doc_json = r#"{
-                "title": "my title",
-                "id": 123456,
-                "score": 4
-        }"#;
-    */
-    // this should work too !
-    // let doc = schema.parse_document(doc_json).unwrap();
-    // let _doc = parse_document(doc_json).unwrap();
-
     Ok(())
 }
