@@ -23,7 +23,7 @@ fn process_lines(r: Receiver<String>) {
     schema_keys.insert("score".to_string());
     schema_keys.insert("title".to_string());
 
-    let _x = parse_document(schema_keys, &msg);
+    let _x = prune_document(schema_keys, &msg);
 }
 
 fn read_file_to_buffer(filename: String) {
@@ -41,7 +41,9 @@ fn read_file_to_buffer(filename: String) {
     }
 }
 
-pub fn parse_document(skeys: HashSet<String>, doc_json: &str) -> Result<Document, DocParsingError> {
+/// reduce the json document to only use the keys in the tantivy schema
+/// which are stored in the HashSet
+pub fn prune_document(skeys: HashSet<String>, doc_json: &str) -> Result<Document, DocParsingError> {
     let json_obj: Map<String, Value> = serde_json::from_str(doc_json).map_err(|_| {
         let doc_json_sample: String = if doc_json.len() < 20 {
             String::from(doc_json)
