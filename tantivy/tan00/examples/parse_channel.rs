@@ -67,7 +67,7 @@ pub fn parse_document(skeys: HashSet<String>, doc_json: &str) -> Result<Document
 }
 
 fn main() -> tantivy::Result<()> {
-    let json_file = String::from("/tmp13/rust-search/data/tanhn01.txt");
+    let json_file = String::from("/tmp13/rust-search/data/tanhn02.txt");
 
     let directory = Path::new("/tmp/tantivy/idxhn");
     let dir_exists = directory.exists();
